@@ -1,20 +1,19 @@
 spring:
+    application:
+        name: etudient-service
+        profiles: { active: dev }
 
-  application:
-    name: etudient-service
+    r2dbc:
+        url: r2dbc:postgresql://localhost:5432/etudiant_db
+        username: postgres
+        password: sadik2003
 
-    profiles: { active: dev }
-  r2dbc:
-    url: r2dbc:postgresql://localhost:5432/etudiant_db
-    username: postgres
-    password: bj151197
+    dotenv:
+        enabled: true
 
+    cloud:
+        config:
+            enabled: false
 
-
-  dotenv:
-    enabled: true
-
-  spring:
-  cloud:
-    config:
-      enabled: false
+server:
+    port: 8083

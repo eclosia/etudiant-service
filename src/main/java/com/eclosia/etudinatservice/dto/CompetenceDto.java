@@ -16,14 +16,14 @@ import jakarta.validation.constraints.NotNull;
 @AllArgsConstructor
 public class CompetenceDto {
 
-  private Long id;
+    private Long id;
 
-  @NotBlank(message = "Le nom de la compétence est obligatoire")
-  private String nom;
+    @NotBlank(message = "Le nom de la compétence est obligatoire")
+    private String nom;
 
-  @NotNull(message = "Le niveau est obligatoire")
-  @Min(value = 0, message = "Le niveau doit être entre 0 et 100")
-  @Max(value = 100, message = "Le niveau doit être entre 0 et 100")
-  private Integer niveau;
+    @NotNull(message = "Le niveau est obligatoire")
+    @Min(value = 0, message = "Le niveau doit être entre 0 et 100")
+    @Max(value = 100, message = "Le niveau doit être entre 0 et 100")
+    private Integer niveau;
+
 }
-

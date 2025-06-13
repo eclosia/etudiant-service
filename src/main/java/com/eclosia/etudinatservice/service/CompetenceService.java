@@ -12,47 +12,47 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class CompetenceService {
 
-  private final CompetenceRepository competenceRepository;
+    private final CompetenceRepository competenceRepository;
 
-  public Flux<CompetenceDto> getCompetencesByEtudiantId(Long etudiantId) {
-    return competenceRepository.findByEtudiantId(etudiantId)
-       .map(this::toDto);
-  }
+    public Flux<CompetenceDto> getCompetencesByEtudiantId(Long etudiantId) {
+        return competenceRepository.findByEtudiantId(etudiantId)
+                .map(this::toDto);
+    }
 
-  public Mono<CompetenceDto> createCompetence(Long etudiantId, CompetenceDto competenceDto) {
-    Competence competence = Competence.builder()
-       .etudiantId(etudiantId)
-       .nom(competenceDto.getNom())
-       .niveau(competenceDto.getNiveau())
-       .build();
+    public Mono<CompetenceDto> createCompetence(Long etudiantId, CompetenceDto competenceDto) {
+        Competence competence = Competence.builder()
+                .etudiantId(etudiantId)
+                .nom(competenceDto.getNom())
+                .niveau(competenceDto.getNiveau())
+                .build();
 
-    return competenceRepository.save(competence)
-       .map(this::toDto);
-  }
+        return competenceRepository.save(competence)
+                .map(this::toDto);
+    }
 
-  public Mono<CompetenceDto> updateCompetence(Long id, Long etudiantId, CompetenceDto competenceDto) {
-    return competenceRepository.findById(id)
-       .filter(competence -> competence.getEtudiantId().equals(etudiantId))
-       .flatMap(existingCompetence -> {
-         existingCompetence.setNom(competenceDto.getNom());
-         existingCompetence.setNiveau(competenceDto.getNiveau());
-         return competenceRepository.save(existingCompetence);
-       })
-       .map(this::toDto);
-  }
+    public Mono<CompetenceDto> updateCompetence(Long id, Long etudiantId, CompetenceDto competenceDto) {
+        return competenceRepository.findById(id)
+                .filter(competence -> competence.getEtudiantId().equals(etudiantId))
+                .flatMap(existingCompetence -> {
+                    existingCompetence.setNom(competenceDto.getNom());
+                    existingCompetence.setNiveau(competenceDto.getNiveau());
+                    return competenceRepository.save(existingCompetence);
+                })
+                .map(this::toDto);
+    }
 
-  public Mono<Void> deleteCompetence(Long id, Long etudiantId) {
-    return competenceRepository.findById(id)
-       .filter(competence -> competence.getEtudiantId().equals(etudiantId))
-       .flatMap(competenceRepository::delete);
-  }
+    public Mono<Void> deleteCompetence(Long id, Long etudiantId) {
+        return competenceRepository.findById(id)
+                .filter(competence -> competence.getEtudiantId().equals(etudiantId))
+                .flatMap(competenceRepository::delete);
+    }
 
-  private CompetenceDto toDto(Competence competence) {
-    return CompetenceDto.builder()
-       .id(competence.getId())
-       .nom(competence.getNom())
-       .niveau(competence.getNiveau())
-       .build();
-  }
+    private CompetenceDto toDto(Competence competence) {
+        return CompetenceDto.builder()
+                .id(competence.getId())
+                .nom(competence.getNom())
+                .niveau(competence.getNiveau())
+                .build();
+    }
 }
 

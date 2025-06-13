@@ -9,13 +9,14 @@
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>Eclosia etudiant  Microservice</name>
+    <name>Eclosia etudiant Microservice</name>
     <description>etudientMicroservice for Eclosia</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.4.2</version>  <relativePath/>
+        <version>3.4.2</version>
+        <relativePath/>
     </parent>
 
     <properties>
@@ -53,14 +54,14 @@
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>
-            <version>0.12.3</version>  </dependency>
+            <version>0.12.3</version>
+        </dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
         </dependency>
-
 
 
         <dependency>
@@ -91,10 +92,6 @@
         </dependency>
 
 
-
-
-
-
         <dependency>
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>
@@ -107,10 +104,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
         </dependency>
-
-
-
-
 
 
         <dependency>
